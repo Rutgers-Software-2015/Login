@@ -105,26 +105,32 @@ public class LoginWindow extends JFrame{
 						if(users[i]=="customer"){
 							loginflag = true;
 							
+							dispose();
 						}
 						if(users[i]=="kitchen"){
 							loginflag = true;
 							
+							dispose();
 						}
 						if(users[i]=="busboy"){
 							loginflag = true;
 							
+							dispose();
 						}
 						if(users[i]=="manager"){
 							loginflag = true;
 							
+							dispose();
 						}
 						if(users[i]=="waiter"){
 							loginflag = true;
-							new WaiterGUI(login);
+							new WaiterGUI();
+							dispose();
 						}
 						if(users[i]=="host"){
 							loginflag = true;
 							
+							dispose();
 						}
 						setVisible(false);
 						userLoginBox.setText("");
