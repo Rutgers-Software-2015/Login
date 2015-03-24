@@ -22,10 +22,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import Host.Host_GUI;
 import KitchenStaff.KitchenStaffGUI;
 import Manager.ManagerRootWindow;
 import Waiter.WaiterMainGUI;
 import ADT.Gradients.GradientPanel;
+import Busboy.BusboyProject;
 import Customer.CustomerGUI;
 
 import java.awt.Font;
@@ -117,7 +119,7 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="busboy"){
 							loginflag = true;
-							
+							new BusboyProject();
 							dispose();
 						}
 						if(users[i]=="manager"){
@@ -132,7 +134,7 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="host"){
 							loginflag = true;
-							
+							new Host_GUI();
 							dispose();
 						}
 						setVisible(false);
