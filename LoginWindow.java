@@ -25,6 +25,7 @@ import javax.swing.border.Border;
 import Manager.ManagerRootWindow;
 import Waiter.GUI.WaiterGUI;
 import ADT.Gradients.GradientPanel;
+import Customer.CustomerGUI;
 
 import java.awt.Font;
 
@@ -105,7 +106,7 @@ public class LoginWindow extends JFrame{
 					if(users[i].equals(userLoginBox.getText()) && passes[i].equals(userPassBox.getText())){
 						if(users[i]=="customer"){
 							loginflag = true;
-							
+							new CustomerGUI();
 							dispose();
 						}
 						if(users[i]=="kitchen"){
