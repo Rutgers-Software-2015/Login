@@ -22,8 +22,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import KitchenStaff.KitchenStaffGUI;
 import Manager.ManagerRootWindow;
-import Waiter.GUI.WaiterGUI;
+import Waiter.WaiterMainGUI;
 import ADT.Gradients.GradientPanel;
 import Customer.CustomerGUI;
 
@@ -111,7 +112,7 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="kitchen"){
 							loginflag = true;
-							
+							new KitchenStaffGUI();
 							dispose();
 						}
 						if(users[i]=="busboy"){
@@ -126,7 +127,7 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="waiter"){
 							loginflag = true;
-							new WaiterGUI();
+							new WaiterMainGUI();
 							dispose();
 						}
 						if(users[i]=="host"){
