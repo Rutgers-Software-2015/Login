@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import Manager.ManagerRootWindow;
 import Waiter.GUI.WaiterGUI;
 import ADT.Gradients.GradientPanel;
 
@@ -119,7 +120,7 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="manager"){
 							loginflag = true;
-							
+							new ManagerRootWindow();
 							dispose();
 						}
 						if(users[i]=="waiter"){
