@@ -26,7 +26,7 @@ import Host.Host_GUI;
 import KitchenStaff.KitchenStaffGUI;
 import Manager.ManagerRootWindow;
 import Waiter.WaiterMainGUI;
-import ADT.Gradients.GradientPanel;
+import Shared.Gradients.GradientPanel;
 import Busboy.BusboyProject;
 import Customer.CustomerGUI;
 
