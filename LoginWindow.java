@@ -28,7 +28,9 @@ import Manager.ManagerRootWindow;
 import Waiter.WaiterMainGUI;
 import Shared.Gradients.GradientPanel;
 import Busboy.BusboyProject;
+import Customer.CustMain;
 import Customer.CustomerGUI;
+import Debug.DebugGUI;
 
 import java.awt.Font;
 
@@ -40,8 +42,8 @@ public class LoginWindow extends JFrame{
 	private JLabel userLabel, passLabel;
 	private boolean confirmed = false;
 	private Map employees;
-	String[] users = {"customer", "kitchen", "busboy", "manager", "waiter", "host"};
-	String[] passes = {"customer", "kitchen", "busboy", "manager", "waiter", "host"};
+	String[] users = {"customer", "kitchen", "busboy", "manager", "waiter", "host", "debug"};
+	String[] passes = {"customer", "kitchen", "busboy", "manager", "waiter", "host", "debug"};
 	String user,pass;
 	private JButton loginButton;
 	private JButton exitButton;
@@ -109,7 +111,7 @@ public class LoginWindow extends JFrame{
 					if(users[i].equals(userLoginBox.getText()) && passes[i].equals(userPassBox.getText())){
 						if(users[i]=="customer"){
 							loginflag = true;
-							new CustomerGUI();
+							new CustMain();
 							dispose();
 						}
 						if(users[i]=="kitchen"){
@@ -135,6 +137,11 @@ public class LoginWindow extends JFrame{
 						if(users[i]=="host"){
 							loginflag = true;
 							new Host_GUI();
+							dispose();
+						}
+						if(users[i]=="debug"){
+							loginflag = true;
+							new DebugGUI();
 							dispose();
 						}
 						setVisible(false);
