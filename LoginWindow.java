@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-import Host.Host_GUI;
+//import Host.Host_GUI;
 import KitchenStaff.KitchenStaffGUI;
 import Manager.ManagerRootWindow;
 import Waiter.WaiterMainGUI;
@@ -136,7 +136,7 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="host"){
 							loginflag = true;
-							new Host_GUI();
+							//new Host_GUI();
 							dispose();
 						}
 						if(users[i]=="debug"){
