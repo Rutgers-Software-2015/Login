@@ -22,13 +22,19 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+
+
+
+
+import Host.Host_GUI;
 //import Host.Host_GUI;
 import KitchenStaff.KitchenStaffGUI;
 import Manager.ManagerRootWindow;
-import Waiter.WaiterMainGUI;
+import Waiter.WaiterGUI;
 import Shared.Gradients.GradientPanel;
 import Busboy.BusboyProject;
 import Customer.CustMain;
+import Customer.CustSub;
 import Customer.CustomerGUI;
 import Debug.DebugGUI;
 
@@ -111,7 +117,7 @@ public class LoginWindow extends JFrame{
 					if(users[i].equals(userLoginBox.getText()) && passes[i].equals(userPassBox.getText())){
 						if(users[i]=="customer"){
 							loginflag = true;
-							new CustMain();
+							new CustSub();
 							dispose();
 						}
 						if(users[i]=="kitchen"){
@@ -131,12 +137,12 @@ public class LoginWindow extends JFrame{
 						}
 						if(users[i]=="waiter"){
 							loginflag = true;
-							new WaiterMainGUI();
+							new WaiterGUI();
 							dispose();
 						}
 						if(users[i]=="host"){
 							loginflag = true;
-							//new Host_GUI();
+							new Host_GUI();
 							dispose();
 						}
 						if(users[i]=="debug"){
