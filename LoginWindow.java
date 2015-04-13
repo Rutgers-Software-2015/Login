@@ -75,6 +75,7 @@ public class LoginWindow extends JFrame{
 	 * 
 	 */
 	private void init() {
+		
 		this.setTitle("Restaurant Login");
 		getContentPane().setLayout(null);
 		this.setResizable(false);
