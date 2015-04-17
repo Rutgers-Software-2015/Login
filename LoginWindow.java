@@ -33,8 +33,6 @@ import Manager.ManagerRootWindow;
 import Waiter.WaiterGUI;
 import Shared.Gradients.GradientPanel;
 import Busboy.BusboyProject;
-import Customer.CustMain;
-import Customer.CustSub;
 import Customer.CustomerGUI;
 import Debug.DebugGUI;
 
@@ -118,7 +116,7 @@ public class LoginWindow extends JFrame{
 					if(users[i].equals(userLoginBox.getText()) && passes[i].equals(userPassBox.getText())){
 						if(users[i]=="customer"){
 							loginflag = true;
-							new CustSub();
+							new CustomerGUI();
 							dispose();
 						}
 						if(users[i]=="kitchen"){
