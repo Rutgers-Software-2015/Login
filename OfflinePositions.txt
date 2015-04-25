@@ -1,7 +1,13 @@
+Host
 Manager
 Customer
+Waiter
+Chef
+Busboy
 Debug
 Waiter
 Chef
 Busboy
 Host
+Waiter
+Waiter
