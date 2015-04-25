@@ -112,6 +112,61 @@ public class LoginWindow extends JFrame{
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean loginflag = false;
+				LoginAuthenticator auth = new LoginAuthenticator(userLoginBox.getText(),userPassBox.getText());
+				if(auth.getAuth()==0){
+					
+					String actor = auth.getActorClass();
+					switch (actor) {
+					
+					case "Waiter": 			loginflag = true;
+								   			new WaiterGUI();
+								   			dispose();
+								   			break;
+								   			
+					case "Manager": 		loginflag = true;
+					   			   			new ManagerRootWindow();
+					   			   			dispose();
+					   			   			break;
+					   			   			
+					case "Host": 			loginflag = true;
+		   			   			   			new Host_GUI();
+		   			   			   			dispose();
+		   			   			   			break;
+		   			   			   			
+					case "Busboy": 			loginflag = true;
+		   			   			   			new BusboyProject();
+		   			   			   			dispose();
+		   			   			   			break;
+		   			   			   			
+					case "Customer": 		loginflag = true;
+		   			   			   			new CustomerGUI();
+		   			   			   			dispose();
+		   			   			   			break;
+		   			   			   			
+					case "Chef": 			loginflag = true;
+		   			   			   			new KitchenStaffGUI();
+		   			   			   			dispose();
+		   			   			   			break;
+		   			   			   			
+					case "Debug": 			loginflag = true;
+  			   								new DebugGUI();
+  			   								dispose();
+  			   								break;
+  			   								
+					default: 				Toolkit.getDefaultToolkit().beep();
+											JOptionPane.showMessageDialog(null, "Invalid Username or Password","Error", JOptionPane.ERROR_MESSAGE);
+											break;
+					}
+					
+				}
+				else{
+					
+					Toolkit.getDefaultToolkit().beep();
+					JOptionPane.showMessageDialog(null, "Invalid Username or Password","Error", JOptionPane.ERROR_MESSAGE);
+						
+				}
+				
+				/*
 				for(int i = 0;i < users.length;i++){
 					if(users[i].equals(userLoginBox.getText()) && passes[i].equals(userPassBox.getText())){
 						if(users[i]=="customer"){
@@ -161,6 +216,7 @@ public class LoginWindow extends JFrame{
 				}
 				
 				loginflag = false;
+				*/
 			}
 		});
 		loginButton.setBounds(34, 176, 133, 23);

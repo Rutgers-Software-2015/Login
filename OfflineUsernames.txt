@@ -1,0 +1,7 @@
+manager
+customer
+debug
+waiter
+kitchen
+busboy
+host

@@ -1,0 +1,7 @@
+Manager
+Customer
+Debug
+Waiter
+Chef
+Busboy
+Host
