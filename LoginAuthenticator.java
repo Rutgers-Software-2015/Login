@@ -201,6 +201,7 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 				System.out.println("Connection valid! Retrieving actor class for "+username+" from database...");
 				ResultSet rs = tell("SELECT position FROM MAINDB.EmployeeList WHERE username=\""+username+"\";");
 				if(rs == null){
+					disconnect();
 					return null;
 				}
 			
@@ -244,6 +245,7 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 					}
 				}
 				
+				disconnect();
 				return null;
 			}
 			
@@ -279,6 +281,7 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 				System.out.println("Connection valid! Retrieving employee ID for "+username+" from database...");
 				ResultSet rs = tell("SELECT id FROM MAINDB.EmployeeList WHERE username=\""+username+"\";");
 				if(rs == null){
+					disconnect();
 					return -1;
 				}
 			
@@ -321,7 +324,7 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 						return Integer.parseInt(actorClasses.get(i));
 					}
 				}
-				
+				disconnect();
 				return -1;
 			}
 			
@@ -398,10 +401,12 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 				    System.out.println("SQLException: " + ex.getMessage());
 				    System.out.println("SQLState: " + ex.getSQLState());
 				    System.out.println("VendorError: " + ex.getErrorCode());
+				    disconnect();
 				    return 1;
 				}
 				catch(Exception e){
 					e.printStackTrace(System.out);
+					disconnect();
 					return 1;
 				}
 			}
