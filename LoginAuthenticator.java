@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -18,6 +17,8 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 	 * This class is used to authenticate login data
 	 * 
 	 * @author Samuel Baysting
+	 * @tester Samuel Baysting
+	 * @debugger Samuel Baysting
 	 * 
 	 */
 	
@@ -169,6 +170,8 @@ public class LoginAuthenticator extends DatabaseCommunicator{
 			
 			userReader.close();
 			passReader.close();
+			userBuffered.close();
+			passBuffered.close();
 			
 			for(int i = 0; i < usernames.size(); i++){
 				if(usernames.get(i).equals(username) && passwords.get(i).equals(password)){

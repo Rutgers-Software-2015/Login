@@ -1,33 +1,19 @@
 package Login;
 
 import java.awt.Color;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Map;
-
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-
-
-
-
-
 import Host.Host_GUI;
-//import Host.Host_GUI;
 import KitchenStaff.KitchenStaffGUI;
 import Manager.ManagerRootWindow;
 import Waiter.WaiterGUI;
@@ -38,40 +24,46 @@ import Debug.DebugGUI;
 
 import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class LoginWindow extends JFrame{
 
-	private JFrame userInterface;				//GUI for a specific actor after login.
-	private JTextField userLogin, passLogin;	//Text field for user name and password information
-	private GradientPanel rootPanel, overlayPanel;	//JPanels for organizing, each has a border and layout designed.
-	private JLabel userLabel, passLabel;
-	private boolean confirmed = false;
-	private Map employees;
-	String[] users = {"customer", "kitchen", "busboy", "manager", "waiter", "host", "debug"};
-	String[] passes = {"customer", "kitchen", "busboy", "manager", "waiter", "host", "debug"};
-	String user,pass;
-	private JButton loginButton;
-	private JButton exitButton;
-	private JTextField userLoginBox;
-	private JPasswordField userPassBox;
-	private LoginWindow login = this;
-	
-	/*
-	 *	TopWindow constructor. Name can be changed at a later time.
-	 * 	Arguments - NULL
-	 * 	@RETURN - NULL
+	/**
+	 * Class created for logging in to the Restaurant System
+	 * Uses DB and offline authentication as needed
+	 * 
+	 * @author Samuel Baysting
+	 * @tester Samuel Baysting
+	 * @debugger Samuel Baysting
 	 * 
 	 */
+	
+	private GradientPanel rootPanel, overlayPanel;
+	public JButton loginButton;
+	public JButton exitButton;
+	public JTextField userLoginBox;
+	public JPasswordField userPassBox;
+	public String actor = null;
+	public JOptionPane error = null;
+	
+	/**
+	 * Initialize a new instance of Login Window and run super constructor for JFrame
+	 * 
+	 * @return none
+	 * 
+	 */
+	
 	public LoginWindow() {
 		super();
 		init();
 	}
 	
-	/*
+	/**
 	 *	Initializing function. For isolation purposes, begins sketch of JFrame.
-	 * 	Arguments - NULL
-	 * 	@RETURN - NULL
+	 * 
+	 * 	@return void
 	 * 
 	 */
+	
 	private void init() {
 		
 		this.setTitle("Restaurant Login");
@@ -90,13 +82,15 @@ public class LoginWindow extends JFrame{
 		this.setVisible(true);
 	}
 	
-	/*
-	 * 	All functions to draw the current frame. These functions can get a bit messy, so be sure to seperate them from the actual
-	 * 	interaction code.
+	/**
+	 * All functions to create and organize the Login Window
+	 * This function also has the login authentication system and window launcher
+	 * Includes key listener to "Enter" for login
 	 * 
-	 * 	Arguments - NULL
-	 * 	@Return - NULL
+	 * @return void
+	 * 
 	 */
+	
 	private void frameManipulation() {
 		
 		rootPanel = new GradientPanel(Color.white,Color.gray);
@@ -110,45 +104,47 @@ public class LoginWindow extends JFrame{
 		
 		loginButton = new JButton("Login");
 		loginButton.addActionListener(new ActionListener() {
+			
+
+			@SuppressWarnings({ "deprecation", "static-access" })
 			public void actionPerformed(ActionEvent arg0) {
-				boolean loginflag = false;
 				LoginAuthenticator auth = new LoginAuthenticator(userLoginBox.getText(),userPassBox.getText());
 				if(auth.getAuth()==0){
 					
-					String actor = auth.getActorClass();
+					actor = auth.getActorClass();
 					switch (actor) {
 					
-					case "Waiter": 			loginflag = true;
+					case "Waiter": 			
 								   			new WaiterGUI();
 								   			dispose();
 								   			break;
 								   			
-					case "Manager": 		loginflag = true;
+					case "Manager": 		
 					   			   			new ManagerRootWindow();
 					   			   			dispose();
 					   			   			break;
 					   			   			
-					case "Host": 			loginflag = true;
+					case "Host": 			
 		   			   			   			new Host_GUI();
 		   			   			   			dispose();
 		   			   			   			break;
 		   			   			   			
-					case "Busboy": 			loginflag = true;
+					case "Busboy": 			
 		   			   			   			new BusboyProject();
 		   			   			   			dispose();
 		   			   			   			break;
 		   			   			   			
-					case "Customer": 		loginflag = true;
+					case "Customer": 		
 		   			   			   			new CustomerGUI();
 		   			   			   			dispose();
 		   			   			   			break;
 		   			   			   			
-					case "Chef": 			loginflag = true;
+					case "Chef": 			
 		   			   			   			new KitchenStaffGUI();
 		   			   			   			dispose();
 		   			   			   			break;
 		   			   			   			
-					case "Debug": 			loginflag = true;
+					case "Debug": 			
   			   								new DebugGUI();
   			   								dispose();
   			   								break;
@@ -162,61 +158,10 @@ public class LoginWindow extends JFrame{
 				else{
 					
 					Toolkit.getDefaultToolkit().beep();
-					JOptionPane.showMessageDialog(null, "Invalid Username or Password","Error", JOptionPane.ERROR_MESSAGE);
+					error = new JOptionPane();
+					error.showMessageDialog(null, "Invalid Username or Password","Error", JOptionPane.ERROR_MESSAGE);
 						
 				}
-				
-				/*
-				for(int i = 0;i < users.length;i++){
-					if(users[i].equals(userLoginBox.getText()) && passes[i].equals(userPassBox.getText())){
-						if(users[i]=="customer"){
-							loginflag = true;
-							new CustomerGUI();
-							dispose();
-						}
-						if(users[i]=="kitchen"){
-							loginflag = true;
-							new KitchenStaffGUI();
-							dispose();
-						}
-						if(users[i]=="busboy"){
-							loginflag = true;
-							new BusboyProject();
-							dispose();
-						}
-						if(users[i]=="manager"){
-							loginflag = true;
-							new ManagerRootWindow();
-							dispose();
-						}
-						if(users[i]=="waiter"){
-							loginflag = true;
-							new WaiterGUI();
-							dispose();
-						}
-						if(users[i]=="host"){
-							loginflag = true;
-							new Host_GUI();
-							dispose();
-						}
-						if(users[i]=="debug"){
-							loginflag = true;
-							new DebugGUI();
-							dispose();
-						}
-						setVisible(false);
-						userLoginBox.setText("");
-						userPassBox.setText("");
-					}
-				}
-				
-				if(loginflag == false){
-				Toolkit.getDefaultToolkit().beep();
-				JOptionPane.showMessageDialog(null, "Invalid Username or Password","Error", JOptionPane.ERROR_MESSAGE);
-				}
-				
-				loginflag = false;
-				*/
 			}
 		});
 		loginButton.setBounds(34, 176, 133, 23);
@@ -252,8 +197,7 @@ public class LoginWindow extends JFrame{
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				if(e.getKeyCode()==10){
+				if(e.getKeyCode()==10){ //Enter button
 					loginButton.doClick();
 				}
 			}
@@ -271,8 +215,7 @@ public class LoginWindow extends JFrame{
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				if(e.getKeyCode()==10){
+				if(e.getKeyCode()==10){ //Enter button
 					loginButton.doClick();
 				}
 			}
