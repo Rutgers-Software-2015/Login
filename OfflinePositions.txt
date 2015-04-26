@@ -11,3 +11,4 @@ Busboy
 Host
 Host
 Customer
+Waiter
