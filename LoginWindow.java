@@ -13,13 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import Host.Host_GUI;
+import Host.HostGUI;
 import KitchenStaff.KitchenStaffGUI;
 import Manager.*;
 import Manager.ManagerGUIs.*;
 import Waiter.WaiterGUI;
 import Shared.Gradients.GradientPanel;
-import Busboy.BusboyProject;
+import Busboy.BusboyGUI;
 import Customer.CustomerGUI;
 import Debug.DebugGUI;
 
@@ -126,12 +126,12 @@ public class LoginWindow extends JFrame{
 					   			   			break;
 					   			   			
 					case "Host": 			
-		   			   			   			new Host_GUI();
+		   			   			   			new HostGUI();
 		   			   			   			dispose();
 		   			   			   			break;
 		   			   			   			
 					case "Busboy": 			
-		   			   			   			new BusboyProject();
+		   			   			   			new BusboyGUI();
 		   			   			   			dispose();
 		   			   			   			break;
 		   			   			   			
