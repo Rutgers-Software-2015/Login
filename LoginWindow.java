@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,9 +16,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import Host.HostGUI;
 import KitchenStaff.KitchenStaffGUI;
-import Manager.ManagerRootWindow;
+import Manager.ManagerGUIs.ManagerRootWindow;
 import Waiter.WaiterGUI;
 import Shared.Gradients.GradientPanel;
 import Busboy.BusboyGUI;
@@ -65,6 +69,16 @@ public class LoginWindow extends JFrame{
 	 */
 	
 	private void init() {
+		
+		addWindowListener(new WindowAdapter() // To open main window again if you hit the corner "X"
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                dispose();
+                System.exit(0);
+            }
+        });
 		
 		this.setTitle("Restaurant Login");
 		getContentPane().setLayout(null);
