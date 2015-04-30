@@ -9,10 +9,8 @@ waiter
 kitchen
 busboy
 host
-david
 rob
 yolanda
 carlin
 rondo
-terri
 julio

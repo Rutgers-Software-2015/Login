@@ -9,9 +9,7 @@ Waiter
 Chef
 Busboy
 Host
-Host
 Customer
-Waiter
 Waiter
 Waiter
 Waiter
